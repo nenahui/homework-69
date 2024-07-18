@@ -1,17 +1,18 @@
 import { AutoComplete } from 'antd';
 import { Complete } from '../../types';
+import { AppDispatch, RootState } from '../../app/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchShows } from '../../store/homeThunks';
 
 export const CompleteField = () => {
-  const options: Complete[] = [
-    { value: 'Hello world!', key: 123 },
-    { value: 'Hello!', key: 124 },
-  ];
+  const dispatch: AppDispatch = useDispatch();
+  const options = useSelector((state: RootState) => state.home.options);
 
   const onChangeField = (value: string) => {
-    console.log(value);
+    dispatch(fetchShows(value));
   };
 
-  const onSelectShow = (_data: unknown, option: Complete) => {
+  const onSelectShow = (_: unknown, option: Complete) => {
     console.log(option);
   };
 
