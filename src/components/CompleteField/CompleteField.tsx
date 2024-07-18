@@ -3,10 +3,12 @@ import { Complete } from '../../types';
 import { AppDispatch, RootState } from '../../app/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchShows } from '../../store/homeThunks';
+import { useNavigate } from 'react-router-dom';
 
 export const CompleteField = () => {
   const dispatch: AppDispatch = useDispatch();
   const options = useSelector((state: RootState) => state.home.options);
+  const navigate = useNavigate();
 
   const onChangeField = (value: string) => {
     dispatch(fetchShows(value));
@@ -14,6 +16,7 @@ export const CompleteField = () => {
 
   const onSelectShow = (_: unknown, option: Complete) => {
     console.log(option);
+    navigate(`/show/${option.key}`);
   };
 
   return (
@@ -22,7 +25,7 @@ export const CompleteField = () => {
       onChange={onChangeField}
       onSelect={onSelectShow}
       placeholder={'Search for TV Show…'}
-      style={{ marginBottom: 10 }}
+      style={{ marginBottom: 20 }}
     />
   );
 };
