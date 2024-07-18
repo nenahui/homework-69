@@ -32,7 +32,13 @@
 
 img {
   width: 150px !important;
-  height: auto;
+  height: 222px !important;
   border-radius: 10px;
   overflow: hidden;
+}
+
+@media screen and (max-width: 400px) {
+  .ant-flex {
+    flex-direction: column !important;
+  }
 }
