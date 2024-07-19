@@ -15,7 +15,6 @@ export const CompleteField = () => {
   };
 
   const onSelectShow = (_: unknown, option: Complete) => {
-    console.log(option);
     navigate(`/show/${option.key}`);
   };
 
